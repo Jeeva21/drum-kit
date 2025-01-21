@@ -1,19 +1,22 @@
+// Detecting Button Press
 for(i=0;i<document.querySelectorAll(".drum").length;i++){
     document.querySelectorAll(".drum")[i].addEventListener("click", function(){
-        var letter = this.innerHTML;
-        console.log("The letter is from Click: " + letter);
-        checkLetter(letter);
+        var letter = this.innerHTML; //this => Again print "this" value from querrySlector
+        console.log("The key detects from click: " + letter);
+        makeSound(letter);
     });
 }
 
+// Detecting Keyboard Press
 document.addEventListener("keypress", function(e){
     console.log(e);
     console.log(e.key);
-    checkLetter(e.key);
+    makeSound(e.key);
 });
 
-function checkLetter(letter){
-    switch (letter) {
+
+function makeSound(key){
+    switch (key) {
         case "w":
             var audio = new Audio("./sounds/crash.mp3");
             audio.play();
