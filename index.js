@@ -4,6 +4,7 @@ for(i=0;i<document.querySelectorAll(".drum").length;i++){
         var letter = this.innerHTML; //this => Again print "this" value from querrySlector
         console.log("The key detects from click: " + letter);
         makeSound(letter);
+        buttonAnimation(letter);
     });
 }
 
@@ -12,6 +13,7 @@ document.addEventListener("keypress", function(e){
     console.log(e);
     console.log(e.key);
     makeSound(e.key);
+    buttonAnimation(e.key);
 });
 
 
@@ -55,4 +57,13 @@ function makeSound(key){
         default:
             break;
     }
+}
+
+function buttonAnimation(currentButton){
+    var activeButton = document.querySelector("." + currentButton);
+    activeButton.classList.add("pressed");
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    }, 100)
+    console.log(activeButton);
 }
